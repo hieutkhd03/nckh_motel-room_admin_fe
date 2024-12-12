@@ -5,13 +5,11 @@ import { useRouter } from "vue-router";
 
 const router = useRouter();
 
-// Logout handler function
 const handleLogout = () => {
   AuthService.logout(); // Xóa thông tin người dùng khỏi localStorage
   router.push("/login");
 };
 
-// Using onMounted to trigger logout when the component is created
 onMounted(() => {
   handleLogout();
 });

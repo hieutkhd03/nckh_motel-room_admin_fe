@@ -11,6 +11,7 @@ const errors = ref({});
 const generalError = ref("");
 const router = useRouter();
 
+//validate input-field
 const validateInput = () => {
   errors.value = {};
 
@@ -29,12 +30,17 @@ const validateInput = () => {
   return Object.keys(errors.value).length === 0;
 };
 
+//Xóa thông báo lỗi khi nhập lại vào input-field
 const clearError = (field) => {
   if (errors.value[field]) {
     errors.value[field] = "";
   }
+  if (generalError.value) {
+    generalError.value = "";
+  }
 };
 
+//Ẩn/Hiện Password
 const togglePasswordVisibility = () => {
   showPassword.value = !showPassword.value;
 };
@@ -51,11 +57,15 @@ const handleLogin = async () => {
   try {
     const user = await AuthService.login(email.value, password.value);
     if (user && user.token) {
-      router.push("/home");
+      if (user.roles && user.roles.includes("Admin")) {
+        router.push("/home");
+      } else {
+        generalError.value =
+          "Bạn không có quyền truy cập. Vui lòng liên hệ Quản trị viên!";
+      }
     }
   } catch (error) {
-    generalError.value =
-      error?.message || "Sai thông tin tài khoản hoặc mật khẩu!";
+    generalError.value = error?.message;
   } finally {
     loading.value = false;
   }
@@ -93,7 +103,7 @@ const handleLogin = async () => {
               required
               @input="clearError('password')"
             />
-            <!-- Trường ẩn: Hiển thị lỗi khi có lỗi -->
+            <!-- Trường ẩn: Lỗi hệ thống -->
             <div v-if="generalError" class="error-message mb-4">
               {{ generalError }}
             </div>
@@ -116,7 +126,6 @@ const handleLogin = async () => {
 </template>
 
 <style scoped>
-/* Keep the same CSS as before */
 .header-title {
   margin-bottom: 24px;
   font-size: 24px;
