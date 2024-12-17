@@ -19,9 +19,9 @@ Dự án được phát triển bằng **Vue.js** và **Vuetify**, hỗ trợ c�
 
 ## 🛠️ **Công nghệ sử dụng**
 
-- **Vue.js** ![Vue](https://img.shields.io/badge/Vue.js-4FC08D?logo=vue.js&logoColor=white)
-- **Vuetify** ![Vuetify](https://img.shields.io/badge/Vuetify-1867C0?logo=vuetify&logoColor=white)
-- **Vite** ![Vite](https://img.shields.io/badge/Vite-B73BFE?logo=vite&logoColor=white)
+- **Vue.js** [![Vue](https://img.shields.io/badge/Vue.js-4FC08D?logo=vue.js&logoColor=white)](https://vuejs.org/)
+- **Vuetify** [![Vuetify](https://img.shields.io/badge/Vuetify-1867C0?logo=vuetify&logoColor=white)](https://vuetifyjs.com/en/)
+- **Vite** [![Vite](https://img.shields.io/badge/Vite-B73BFE?logo=vite&logoColor=white)](https://vite.dev/)
 
 ---
 
